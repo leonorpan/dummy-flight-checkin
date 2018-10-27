@@ -1,12 +1,14 @@
 import React from 'react';
 import './FlightSeat.css';
+import { Radio } from 'antd';
 
 const FlightSeat = ({ Seat }) => {
+  const RadioButton = Radio.Button;
+
   return (
-    <div className="App-FlightSeat">
-      <span>{Seat.window && 'W'}</span>
-      <span>{Seat.id}</span>
-    </div>
+    <RadioButton disabled={Seat.occupied} className="FlightSeat" value={Seat.id}>
+      {Seat.price}
+    </RadioButton>
   );
 };
 

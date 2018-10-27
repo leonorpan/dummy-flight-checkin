@@ -1,9 +1,6 @@
-.App-FlightSeat {
-  width: 60px;
-  height: 60px;
-  border-radius: 5px;
-  border: 1px solid #000;
+.FlightSeat {
+  width: 64px;
+  height: 64px;
+  line-height: 60px;
   margin: 10px 6px;
-  display: inline-block;
-  vertical-align: 'middle';
 }
