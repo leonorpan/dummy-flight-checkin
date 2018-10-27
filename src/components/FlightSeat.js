@@ -6,7 +6,10 @@ const FlightSeat = ({ Seat }) => {
   const RadioButton = Radio.Button;
 
   return (
-    <RadioButton disabled={Seat.occupied} className="FlightSeat" value={Seat.id}>
+    <RadioButton
+      disabled={Seat.occupied}
+      className="FlightSeat"
+      value={Seat.id}>
       {Seat.price}
     </RadioButton>
   );

@@ -1,16 +1,39 @@
-function calculatePrice(window = false, aisle = false, extraLeg = false) {
-  let calcPrice = 2;
-  if (window) {
-    calcPrice += 10;
-  } else if (aisle) {
-    calcPrice += 4;
+const PRICE_BY_FEATURE = {
+  window: 10,
+  aisle: 4,
+  extraLeg: 10,
+  simple: 2,
+};
+
+function calculateSeatPrice(features) {
+  let calcPrice = PRICE_BY_FEATURE['simple'];
+  if (features.window) {
+    calcPrice += PRICE_BY_FEATURE['window'];
+  } else if (features.aisle) {
+    calcPrice += PRICE_BY_FEATURE['aisle'];
   }
 
-  if (extraLeg) {
-    calcPrice += 20;
+  if (features.extraLeg) {
+    calcPrice += PRICE_BY_FEATURE['extraLeg'];
   }
   return calcPrice;
 }
+
+const PASSENGER = {
+  id: 0,
+  firstName: 'Joanna',
+  lastName: 'Doe',
+  validationId: 'AEK11129999RJ',
+  paid: false,
+  seatId: null,
+};
+
+const FLIGHT = {
+  id: 'TRF476',
+  from: 'Stockholm ARN',
+  to: 'Berlin TXL',
+  price: 280,
+};
 
 function generateSeatsForFlight(numberOfSeats = 200, seatsInRow = 6) {
   let seats = [];
@@ -25,24 +48,31 @@ function generateSeatsForFlight(numberOfSeats = 200, seatsInRow = 6) {
 
   for (let i = 0; i < numberOfSeats; i++) {
     let row = Math.floor(i / seatsInRow) + 1;
-    let col = columns[i % seatsInRow];
-    let window = i % seatsInRow === 0 || i % seatsInRow === seatsInRow - 1;
-    let aisle = seatsInRow / 2 === i % seatsInRow + 1 || seatsInRow / 2 === i % seatsInRow;
+    let col = i % seatsInRow;
+    let colCode = columns[col];
+    let window = col === 0 || col === seatsInRow - 1;
+    let aisle = seatsInRow / 2 === col + 1 || seatsInRow / 2 === col;
     let extraLeg = row % 10 === 0;
     let occupied = Math.random() < 0.1;
+    let features = {
+      window,
+      aisle,
+      extraLeg,
+    };
     let seat = {
-      id: row + col,
-      col,
+      id: row + colCode,
+      colCode,
       row,
       window,
       aisle,
       extraLeg,
       occupied,
-      price: calculatePrice(window, aisle, extraLeg),
+      features,
+      price: calculateSeatPrice(features),
     };
     seats.push(seat);
   }
   return seats;
 }
 
-export { generateSeatsForFlight };
+export { generateSeatsForFlight, FLIGHT, PASSENGER };

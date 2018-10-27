@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+.ant-card {
+  margin-bottom: 2rem;
+}
+
 body {
   margin: 0;
   padding: 0;
