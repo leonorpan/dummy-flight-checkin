@@ -1,5 +1,7 @@
+import { SEAT_CODE_BY_COL } from './Cnst';
+
 const PRICE_BY_FEATURE = {
-  window: 10,
+  nearWindow: 10,
   aisle: 4,
   extraLeg: 10,
   simple: 2,
@@ -7,8 +9,8 @@ const PRICE_BY_FEATURE = {
 
 function calculateSeatPrice(features) {
   let calcPrice = PRICE_BY_FEATURE['simple'];
-  if (features.window) {
-    calcPrice += PRICE_BY_FEATURE['window'];
+  if (features.nearWindow) {
+    calcPrice += PRICE_BY_FEATURE['nearWindow'];
   } else if (features.aisle) {
     calcPrice += PRICE_BY_FEATURE['aisle'];
   }
@@ -39,9 +41,7 @@ function generateSeatsForFlight(numberOfSeats = 200, seatsInRow = 6) {
       id: row + colCode,
       colCode,
       row,
-      window,
-      aisle,
-      extraLeg,
+      reserved: false,
       occupied,
       features,
       price: calculateSeatPrice(features),

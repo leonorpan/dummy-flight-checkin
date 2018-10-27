@@ -1,13 +1,15 @@
 import React from 'react';
 import { Card, Button } from 'antd';
 
-class OrderSummaty extends React.Component {
+class OrderSummary extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const totalPrice = this.props.Flight.price  + (this.props.SelectedSeat ? this.props.SelectedSeat.price : 0);
+    const totalPrice =
+      this.props.Flight.price +
+      (this.props.SelectedSeat ? this.props.SelectedSeat.price : 0);
     return (
       <Card title="Order Summary: ">
         {this.props.SelectedSeat && (
@@ -16,7 +18,7 @@ class OrderSummaty extends React.Component {
             <p>Flight price: {this.props.Flight.price}</p>
             <p>Price for Seat: {this.props.SelectedSeat.price}</p>
             <p>
-            <b>Total: {totalPrice}</b>
+              <b>Total: {totalPrice}</b>
             </p>
           </div>
         )}
@@ -26,11 +28,10 @@ class OrderSummaty extends React.Component {
             assigned one.
           </p>
         )}
-        <Button type="primary">PAY {totalPrice}
-        </Button>
+        <Button type="primary">PAY {totalPrice}</Button>
       </Card>
     );
   }
 }
 
-export default OrderSummaty;
+export default OrderSummary;
