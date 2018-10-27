@@ -5,13 +5,17 @@ const PASSENGER = {
   validationId: 'AEK11129999RJ',
   paid: false,
   seatId: null,
+  company: 'diffyJet',
 };
 
 const FLIGHT = {
   id: 'TRF476',
   from: 'Stockholm ARN',
   to: 'Berlin TXL',
+  departAt: '11:00',
+  arriveAt: '12:40',
   price: 280,
+  date: '2018-11-03',
 };
 
 const SEAT_CODE_BY_COL = {

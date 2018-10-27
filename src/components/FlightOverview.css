@@ -1,0 +1,8 @@
+.FlightOverview {
+  display: flex;
+  flex-direction: row;
+}
+
+.FlightOverview > div {
+  flex: 50%;
+}

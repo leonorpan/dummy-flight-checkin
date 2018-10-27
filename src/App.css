@@ -1,9 +1,6 @@
 .App {
 }
 
-.App-header {
-}
-
 .App-Container {
   max-width: 960px;
   width: 100%;
@@ -15,17 +12,11 @@
   flex-wrap: wrap;
 }
 
-.App-FlightSeats-Wrapper {
-  max-width: 100%;
-  padding: 20px;
-  flex: 70%;
-}
-
 .App-Summary {
   flex: 30%;
   padding: 20px;
 }
 
-.App-FlightSeats-Row {
-  display: flex;
+.Checkin-Progress {
+  margin-bottom: 40px;
 }

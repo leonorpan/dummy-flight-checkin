@@ -1,4 +1,8 @@
 .SeatSelector {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.SeatSelector .ant-checkbox-wrapper {
+  margin-bottom: 1rem;
 }

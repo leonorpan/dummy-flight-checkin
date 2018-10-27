@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { generateSeatsForFlight } from './flightDataGenerator';
 import { FLIGHT, PASSENGER } from './Cnst';
 import FlightOverview from './components/FlightOverview';
@@ -39,21 +39,37 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header" />
         <main className="App-Container">
           <Router>
             <React.Fragment>
-            <Route path="/summary" render={() =>             <OrderSummary
-              SelectedSeat={this.state.selectedSeat}
-              Flight={FLIGHT}
-            />} />
-            <Route path="/seat" render={() => <SeatSelector
-              Seats={this.state.seats}
-              Selected={this.state.selectedSeat}
-              onSeatSelected={seatId => this.onSeatChange(seatId)}
-            />} />
-            <Route path="/passenger" render={() => <PassengerInformation Passenger={PASSENGER} />} />
-            <Route path="/" exact render={() => <FlightOverview Flight={FLIGHT} />} />
+              <Route
+                path="/summary"
+                render={() => (
+                  <OrderSummary
+                    SelectedSeat={this.state.selectedSeat}
+                    Flight={FLIGHT}
+                  />
+                )}
+              />
+              <Route
+                path="/seat"
+                render={() => (
+                  <SeatSelector
+                    Seats={this.state.seats}
+                    Selected={this.state.selectedSeat}
+                    onSeatSelected={seatId => this.onSeatChange(seatId)}
+                  />
+                )}
+              />
+              <Route
+                path="/passenger"
+                render={() => <PassengerInformation Passenger={PASSENGER} />}
+              />
+              <Route
+                path="/"
+                exact
+                render={() => <FlightOverview Flight={FLIGHT} />}
+              />
             </React.Fragment>
           </Router>
         </main>
