@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, Checkbox, Radio } from 'antd';
+import {Checkbox, Radio } from 'antd';
+import AppCard from './AppCard';
 import FlightSeatRow from './FlightSeatRow';
 import './SeatSelector.css';
 
@@ -44,7 +45,7 @@ class SeatSelector extends React.Component {
     if (!this.props.Seats) return (<div></div>);
 
     return (
-      <Card title="Select your seat:">
+      <AppCard Title="Select your seat:" PrevLink="/passenger" NextLink="/summary" PrevTxt="Passenger info" NextTxt="Order Summary">
         <div className="SeatSelector">
         <Checkbox onChange={(e) => this.onCheckBoxChanged(e.target.checked)}>Assign me a random seat</Checkbox>
         <RadioGroup
@@ -54,7 +55,7 @@ class SeatSelector extends React.Component {
           {this.props.Seats.length > 0 && this.renderRows()}
         </RadioGroup>
         </div>
-      </Card>
+      </AppCard>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, Button } from 'antd';
+import { Button } from 'antd';
+import AppCard from './AppCard';
 
 class OrderSummary extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class OrderSummary extends React.Component {
       this.props.Flight.price +
       (this.props.SelectedSeat ? this.props.SelectedSeat.price : 0);
     return (
-      <Card title="Order Summary: ">
+      <AppCard Title="Order Summary: " NextLink="/checkout" PrevLink="/seat" NextTxt="Check in" PrevTxt="Choose seat" >
         {this.props.SelectedSeat && (
           <div>
             <p>Seat selected: {this.props.SelectedSeat.id}</p>
@@ -29,7 +30,7 @@ class OrderSummary extends React.Component {
           </p>
         )}
         <Button type="primary">PAY {totalPrice}</Button>
-      </Card>
+      </AppCard>
     );
   }
 }

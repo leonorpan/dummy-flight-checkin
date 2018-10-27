@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { generateSeatsForFlight } from './flightDataGenerator';
 import { FLIGHT, PASSENGER } from './Cnst';
 import FlightOverview from './components/FlightOverview';
@@ -29,7 +30,6 @@ class App extends Component {
   }
 
   onSeatChange(seatId) {
-    alert(seatId)
     let seat = seatId ? this.state.seats.filter(s => s.id === seatId)[0] : null;
     this.setState({
       selectedSeat: seat,
@@ -41,21 +41,21 @@ class App extends Component {
       <div className="App">
         <header className="App-header" />
         <main className="App-Container">
-          <div className="App-FlightSeats-Wrapper">
-            <FlightOverview Flight={FLIGHT} />
-            <PassengerInformation Passenger={PASSENGER} />
-            <SeatSelector
+          <Router>
+            <React.Fragment>
+            <Route path="/summary" render={() =>             <OrderSummary
+              SelectedSeat={this.state.selectedSeat}
+              Flight={FLIGHT}
+            />} />
+            <Route path="/seat" render={() => <SeatSelector
               Seats={this.state.seats}
               Selected={this.state.selectedSeat}
               onSeatSelected={seatId => this.onSeatChange(seatId)}
-            />
-          </div>
-          <div className="App-Summary">
-            <OrderSummary
-              SelectedSeat={this.state.selectedSeat}
-              Flight={FLIGHT}
-            />
-          </div>
+            />} />
+            <Route path="/passenger" render={() => <PassengerInformation Passenger={PASSENGER} />} />
+            <Route path="/" exact render={() => <FlightOverview Flight={FLIGHT} />} />
+            </React.Fragment>
+          </Router>
         </main>
       </div>
     );

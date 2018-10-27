@@ -1,13 +1,13 @@
 import React from 'react';
-import { Card } from 'antd';
+import AppCard from './AppCard';
 
 const FlightOverview = ({ Flight }) => {
   return (
-    <Card title="Your flight details:">
+    <AppCard NextLink="/passenger" PrevLink="/" Title="Your flight details:">
       <div>Flight No: {Flight.id}</div>
       <div>From :{Flight.from}</div>
       <div>To: {Flight.to}</div>
-    </Card>
+    </AppCard>
   );
 };
 
