@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import {
-  generateSeatsForFlight,
-  FLIGHT,
-  PASSENGER,
-} from './flightDataGenerator';
+import { generateSeatsForFlight } from './flightDataGenerator';
+import { FLIGHT, PASSENGER } from './Cnst';
 import FlightOverview from './components/FlightOverview';
 import PassengerInformation from './components/PassengerInformation';
 import SeatSelector from './components/SeatSelector';
