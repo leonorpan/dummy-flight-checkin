@@ -15,3 +15,7 @@
 .App-FlightSeats-Wrapper {
   max-width: 100%;
 }
+
+.App-FlightSeats-Row {
+  display: flex;
+}

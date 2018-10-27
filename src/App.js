@@ -31,6 +31,9 @@ class App extends Component {
             <div className="App-FlightSeats-Wrapper">
               {this.state.seats.length > 0 &&
                 this.state.seats.map((seat, id) => {
+                  if (id % this.state.cols === 0) {
+                    return <React.Fragment><br></br><FlightSeat key={seat.id} Seat={seat} /></React.Fragment>
+                  }
                   return <FlightSeat key={seat.id} Seat={seat} />;
                 })}
             </div>
