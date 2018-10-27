@@ -29,11 +29,11 @@ class App extends Component {
   }
 
   onSeatChange(seatId) {
-    let seat = this.state.seats.filter(s => s.id === seatId)[0];
+    alert(seatId)
+    let seat = seatId ? this.state.seats.filter(s => s.id === seatId)[0] : null;
     this.setState({
       selectedSeat: seat,
     });
-    //this.startTimer();
   }
 
   render() {

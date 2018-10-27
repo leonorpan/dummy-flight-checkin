@@ -1,13 +1,14 @@
 import React from 'react';
-import { Card } from 'antd';
-import { Radio } from 'antd';
+import { Card, Checkbox, Radio } from 'antd';
 import FlightSeatRow from './FlightSeatRow';
+import './SeatSelector.css';
 
 class SeatSelector extends React.Component {
   constructor(props) {
     super(props);
 
     this.renderRows = this.renderRows.bind(this);
+    this.onCheckBoxChanged = this.onCheckBoxChanged.bind(this);
   }
 
   renderRows() {
@@ -32,18 +33,27 @@ class SeatSelector extends React.Component {
     )
   }
 
+  onCheckBoxChanged(checked) {
+    if (checked) {
+      this.props.onSeatSelected(null)
+    }
+  }
+
   render() {
     const RadioGroup = Radio.Group;
     if (!this.props.Seats) return (<div></div>);
 
     return (
       <Card title="Select your seat:">
+        <div className="SeatSelector">
+        <Checkbox onChange={(e) => this.onCheckBoxChanged(e.target.checked)}>Assign me a random seat</Checkbox>
         <RadioGroup
           onChange={e => this.props.onSeatSelected(e.target.value)}
           buttonStyle="solid"
           value={this.props.Selected ? this.props.Selected.id : null}>
           {this.props.Seats.length > 0 && this.renderRows()}
         </RadioGroup>
+        </div>
       </Card>
     );
   }
