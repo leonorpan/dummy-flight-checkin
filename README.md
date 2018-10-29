@@ -1,3 +1,7 @@
+![Node Version >= 8.10.0](https://img.shields.io/badge/node-%3E%3D%208.12.0-brightgreen.svg)
+![npm v6.4.1](https://img.shields.io/badge/npm%20-v6.4.1-blue.svg)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 # Simple Flight Checkin feature
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
