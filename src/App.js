@@ -19,7 +19,6 @@ class App extends Component {
       seats: [],
       selectedSeat: null,
     };
-    this.startTimer = this.startTimer.bind(this);
   }
 
   componentDidMount() {
@@ -30,10 +29,6 @@ class App extends Component {
     this.setState({
       seats,
     });
-  }
-
-  startTimer() {
-    console.log('timer');
   }
 
   onSeatChange(seatId) {

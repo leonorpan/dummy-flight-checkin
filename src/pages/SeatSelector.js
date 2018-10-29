@@ -3,14 +3,19 @@ import { Checkbox, Radio } from 'antd';
 import AppCard from '../components/global/AppCard';
 import FlightSeatRow from '../components/aircraft/FlightSeatRow';
 import FlightSeatDemo from '../components/aircraft/FlightSeatDemo';
+import AppCountDown from '../components/global/AppCountdown';
 import './SeatSelector.css';
 
 class SeatSelector extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      reserved: false,
+    };
     this.renderRows = this.renderRows.bind(this);
     this.onCheckBoxChanged = this.onCheckBoxChanged.bind(this);
+    this.onSeatChanged = this.onSeatChanged.bind(this);
   }
 
   renderRows() {
@@ -35,9 +40,16 @@ class SeatSelector extends React.Component {
     );
   }
 
+  onSeatChanged(seatId) {
+    this.setState({
+      reserved: !!seatId,
+    });
+    this.props.onSeatSelected(seatId);
+  }
+
   onCheckBoxChanged(checked) {
     if (checked) {
-      this.props.onSeatSelected(null);
+      this.props.onSeatChanged(null);
     }
   }
 
@@ -55,7 +67,7 @@ class SeatSelector extends React.Component {
         <div className="SeatSelector">
           <div className="SeatSelector-Aircraft">
             <RadioGroup
-              onChange={e => this.props.onSeatSelected(e.target.value)}
+              onChange={e => this.onSeatChanged(e.target.value)}
               buttonStyle="solid"
               value={this.props.Selected ? this.props.Selected.id : null}>
               {this.props.Seats.length > 0 && this.renderRows()}
@@ -66,6 +78,12 @@ class SeatSelector extends React.Component {
               Assign me a random seat
             </Checkbox>
             <FlightSeatDemo />
+            {this.state.reserved && (
+              <AppCountDown
+                onTimeOut={() => this.onSeatChanged(null)}
+                Seconds={180}
+              />
+            )}
           </div>
         </div>
       </AppCard>
