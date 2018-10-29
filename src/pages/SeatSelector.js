@@ -2,7 +2,7 @@ import React from 'react';
 import { Checkbox, Radio } from 'antd';
 import AppCard from '../components/global/AppCard';
 import FlightSeatRow from '../components/aircraft/FlightSeatRow';
-import FlightSeat from '../components/aircraft/FlightSeat';
+import FlightSeatDemo from '../components/aircraft/FlightSeatDemo';
 import './SeatSelector.css';
 
 class SeatSelector extends React.Component {
@@ -65,28 +65,7 @@ class SeatSelector extends React.Component {
             <Checkbox onChange={e => this.onCheckBoxChanged(e.target.checked)}>
               Assign me a random seat
             </Checkbox>
-            <div className="SeatSelector-Demo">
-              <div>
-                <FlightSeat
-                  Seat={{
-                    features: {
-                      extraLeg: true,
-                    },
-                    id: 'XX',
-                  }}
-                />
-                <p>Extra space</p>
-              </div>
-              <div>
-                <FlightSeat
-                  Seat={{
-                    occupied: true,
-                    id: 'ZZ',
-                  }}
-                />
-                <p>Occupied</p>
-              </div>
-            </div>
+            <FlightSeatDemo />
           </div>
         </div>
       </AppCard>
