@@ -2,6 +2,10 @@
 ![npm v6.4.1](https://img.shields.io/badge/npm%20-v6.4.1-blue.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
+<a href="https://www.netlify.com">
+  <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"/>
+</a>
+
 # Simple Flight Checkin feature
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
