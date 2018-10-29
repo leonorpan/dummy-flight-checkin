@@ -31,7 +31,7 @@ function generateSeatsForFlight(numberOfSeats = 200, seatsInRow = 6) {
     let nearWindow = col === 0 || col === seatsInRow - 1;
     let aisle = seatsInRow / 2 === col + 1 || seatsInRow / 2 === col;
     let extraLeg = row % 10 === 0;
-    let occupied = Math.random() < 0.1;
+    let occupied = Math.random() < 0.2;
     let features = {
       nearWindow: nearWindow,
       aisle,

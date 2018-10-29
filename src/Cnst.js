@@ -3,19 +3,41 @@ const PASSENGER = {
   firstName: 'Joanna',
   lastName: 'Doe',
   validationId: 'AEK11129999RJ',
-  paid: false,
-  seatId: null,
-  company: 'diffyJet',
+  bookings: [
+    {
+      id: 0,
+      flightId: 'TRF476',
+      checkedin: false,
+      paid: true,
+      seatId: null,
+      classType: 'ECONOMY',
+    },
+  ],
 };
 
 const FLIGHT = {
   id: 'TRF476',
-  from: 'Stockholm ARN',
-  to: 'Berlin TXL',
-  departAt: '11:00',
-  arriveAt: '12:40',
+  from: {
+    city: 'Stockholm',
+    airport: 'ARN',
+    timestamp: 1541930400000,
+    zone: 'CET',
+  },
+  to: {
+    city: 'Berlin',
+    airport: 'TXL',
+    timestamp: 1541936400000,
+    zone: 'CEST',
+  },
+  aircraft: {
+    id: 0,
+    name: 'Boeing 761',
+    seats: 200,
+    seatsByRow: 6,
+  },
   price: 280,
-  date: '2018-11-03',
+  curCode: 'EUR',
+  company: 'diffyJet',
 };
 
 const SEAT_CODE_BY_COL = {

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { generateSeatsForFlight } from './flightDataGenerator';
 import { FLIGHT, PASSENGER } from './Cnst';
-import FlightOverview from './components/FlightOverview';
-import PassengerInformation from './components/PassengerInformation';
-import SeatSelector from './components/SeatSelector';
-import OrderSummary from './components/OrderSummary';
+import {
+  Checkout,
+  FlightOverview,
+  PassengerInformation,
+  OrderSummary,
+  SeatSelector,
+} from './pages';
+import Checkin from './CheckinRouter';
 import './App.css';
 
 class App extends Component {
@@ -19,7 +23,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const seats = generateSeatsForFlight(60, 4);
+    const seats = generateSeatsForFlight(
+      FLIGHT.aircraft.seats,
+      FLIGHT.aircraft.seatsByRow
+    );
     this.setState({
       seats,
     });
@@ -41,7 +48,11 @@ class App extends Component {
       <div className="App">
         <main className="App-Container">
           <Router>
-            <React.Fragment>
+            <Checkin>
+              <Route
+                path="/checkout"
+                render={() => <Checkout Flight={FLIGHT} />}
+              />
               <Route
                 path="/summary"
                 render={() => (
@@ -55,6 +66,7 @@ class App extends Component {
                 path="/seat"
                 render={() => (
                   <SeatSelector
+                    Aircraft={FLIGHT.aircraft}
                     Seats={this.state.seats}
                     Selected={this.state.selectedSeat}
                     onSeatSelected={seatId => this.onSeatChange(seatId)}
@@ -70,7 +82,7 @@ class App extends Component {
                 exact
                 render={() => <FlightOverview Flight={FLIGHT} />}
               />
-            </React.Fragment>
+            </Checkin>
           </Router>
         </main>
       </div>
